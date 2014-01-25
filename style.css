@@ -857,7 +857,7 @@ body {
 .pageheader .icon li {
   float: left;
   background-image: none;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 9px;
   padding: 0;
 }
 .pageheader .icon li a {
