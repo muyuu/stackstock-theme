@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+// 使用Compassライブラリ
+// @import "compass/css3";
+
+// 設定ファイル
+@import "setting";
+
+// 共通ライブラリ
+@import "common/utility";
+@import "common/utility-css3";
+
+// 外部ライブラリ
+@import "../libs/normalize-scss/_normalize.scss";
+
+// サイト固有のファイル
+@import "site-element"; // 要素とか
+@import "site-grid"; // 要素とか
+@import "common/responsive";  // レイアウト
+@import "site-module";  // 各種モジュール
+@import "site-layout";  // レイアウトのみ
+
+//--------------------------------------------------
+// これ以降は各ページごとのファイルとか
+// 担当者ごとのファイルとか各々好きにすればいいよ
+//--------------------------------------------------
+
+.archive {
+  @extend %archive_style;
+}
+
+.search {
+  .content {
+    @extend %archive_style;
+  }
+}
+.single {
+	.content {
+		article {
+		  margin:0 0 50px;
+		}
+	}
+}
+@import "site-responsive";

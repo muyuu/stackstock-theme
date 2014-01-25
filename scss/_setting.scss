@@ -1,0 +1,81 @@
+//--------------------------------------------------
+// 各種変数
+//--------------------------------------------------
+
+// サポートするブラウザに true
+$support-ie6: false;
+$support-ie7: false;
+$support-ie8: true;
+$support-ie9: true;
+$support-mozilla: true;
+$support-webkit : true; // Chrome, Safari
+$support-opera  : true;
+
+// # Vendor-prefixed CSS Property
+$use-prefix-webkit: true;
+$use-prefix-moz   : true;
+$use-prefix-ms    : true;
+$use-prefix-o     : true;
+
+// # IE
+$use-ie-filter    : false;
+$use-ie-expression: false;
+
+// DOCTYPEがHTML5の場合は true
+$use-html5: true;
+
+//--------------------------------------------------
+// * WordPress か否か
+// WPだったらテーマコメント表示
+//--------------------------------------------------
+$wp-flg : true;
+
+@if $wp-flg {
+/*
+Theme Name:  "RIN"
+Theme URI:   "http://stackstock.net/"
+Description: "Muyuu's Blog Theme"
+Version:     "1.0"
+Author:      "Muyuu"
+Author URI:  "http://stackstock.net/"
+*/
+}
+
+//-------------------------------------------------
+// グリッドサイズ
+$column-width: 60px;    // 12 columns = 840px
+$gutter-width: 30px;    // 11 gutters = 220px
+$content-width: $column-width * 12 + $gutter-width * 11;
+
+// レスポンシブフラグ
+$support-responsive: true;
+
+// ------------------------------------------------
+// 共通マージン
+$mgn01: 20px;
+
+// ------------------------------------------------
+// 各種フォルダパス
+$dir : "/wp-content/themes/RIN/";
+$img : "#{$dir}i/";
+
+// # DataURI
+//$dataURI-btn: "data:image/png;base64,*****";
+
+// ------------------------------------------------
+// 配色
+// ------------------------------------------------
+// 文字色
+$font1   : #404040;
+$font2   : rgb(51,51,51);
+$font3   : rgb(51,51,51);
+
+// リンク
+$lnk1 : #254b79;
+$lnk1Hover : #254b79;
+
+// 各種カラー
+$mclr    : hsla(181, 39%, 70%, 1);
+$sclr    : hsla(213, 53%, 31%, 1);
+$cclr    : hsla(180, 45%, 84%, 1);
+$bclr    : rgba(195, 232, 232, 0.3);

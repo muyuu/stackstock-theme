@@ -1,0 +1,127 @@
+%content-h2 {
+  margin: 60px 0 20px;
+  font-size: 1.8em;
+  font-weight: normal;
+  color: $sclr;
+  border-left: 10px solid #254B79;
+  padding-left: 10px;
+}
+
+// ------------------------------------
+// ソーシャルボタン
+// ------------------------------------
+@mixin social-button ($str){
+  background:url("#{$dir}i/#{$str}_icon_hover.png") no-repeat left top;
+  margin:0 0 0 15px;
+  a {
+    display:block;
+    width:40px;
+    height:40px;
+    img {
+      &:hover {
+        opacity:0;
+        filter: alpha(opacity=0);
+        -ms-filter: "alpha( opacity=0 )";
+      }
+    }
+  }
+}
+
+// ------------------------------------
+// ブロックタイプのリンク
+// ------------------------------------
+%block_hover_li {
+  ul {
+    margin-top: $mgn01;
+    border-top:1px solid $mclr;
+    li {
+      padding:0;
+      margin:0;
+      background:none;
+      border-bottom:1px solid $mclr;
+      .children {
+        margin:0;
+        li {
+          border-bottom:1px solid $mclr;
+          &:first-child {
+            border-top:none;
+          }
+          &:last-child {
+            border-bottom:none;
+          }
+          a {
+            text-indent: 1em;
+          }
+        }
+      }
+      a {
+        display:block;
+        width:100%;
+        padding:8px 0;
+        margin:0;
+
+        &:hover {
+          border:none;
+          color:$font1;
+          background:rgba(195, 232, 232, 0.3);
+        }
+      }
+    }
+  }
+}
+
+// ------------------------------------
+// アーカイブページ
+// ------------------------------------
+%archive_style {
+  .main {
+    border-top:1px solid $sclr;
+
+    h2 {
+      border-bottom:1px dotted $font1;
+      line-height:1.5em;
+      font-weight:normal;
+      font-size:1em;
+      margin:0;
+
+      a {
+        display:block;
+        //width:520px;
+        padding:19px 0;
+
+        &:hover {
+          background: $bclr;
+        }
+      }
+    }
+
+    .pagenavi {
+      margin:40px 0 0;
+    }
+  }
+}
+
+.socialBlock01 {
+  margin-top: 20px;
+}
+.socialBlock01,
+.socialBlock01 div,
+.socialBlock01 div iframe,
+.socialBlock01 .BXxcvb {
+  width: 100% !important;
+}
+// -----------------------------------
+// PREとかのコード表示(ハイライトはしない類い)
+// -----------------------------------
+pre {
+  background-color: ghostWhite;
+  border: 1px solid #ddd;
+  font-family: 'Source Code Pro', sans-serif;
+  padding: 3px 5px;
+}
+
+// -----------------------------------
+// テキスト色
+// -----------------------------------
+.caution {  color: #e51e33; }
+.success {  color: #10ad56; }

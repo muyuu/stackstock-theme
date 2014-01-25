@@ -1,0 +1,407 @@
+// .selectorA {
+//		 // 四つ角を指定。
+//		 @include border-radius("5px 10px 20px 5px");
+// }
+// .selectorB {
+//		 // 左上を5pxの角丸に指定。
+//		 @include border-radius("5px", "top-left");
+// }
+
+@mixin border-radius($property-value, $property-type: shorthand) {
+		// Firefox3.6以下のtopleftやbottomrightなどの
+		// 1コーナーのみを指定する記述には対応していません。
+		$property: border-radius;
+		@if $property-type != shorthand {
+				$property: border-#{$property-type}-radius;
+				// e.g. 'top-left', 'bottom-right'
+		}
+		// OUTPUT
+		@if $use-prefix-webkit { -webkit-#{$property}: #{$property-value}; }
+		@if $use-prefix-moz { -moz-#{$property}: #{$property-value}; }
+		#{$property}: #{$property-value};
+}
+
+// ---------------------------------------------------------
+// box-shadow
+// ---------------------------------------------------------
+@mixin shadow( $off-y, $off-x, $blur, $color){
+	-moz-box-shadow: $off-y $off-x $blur $color;
+	-webkit-box-shadow: $off-y $off-x $blur $color;
+	box-shadow: $off-y $off-x $blur $color;
+}
+
+// ---------------------------------------------------------
+// Gradiation
+// ---------------------------------------------------------
+@mixin gradient($baseColor, $toColor){
+	background-color:$baseColor;
+	background-image: -moz-linear-gradient(top, $baseColor, $toColor);
+	background-image: -webkit-gradient(linear,
+	                                   left top,
+	                                   left bottom,
+	                                   color-stop(0, $baseColor),
+	                                   color-stop(1, $toColor));
+	background-image: linear-gradient(top,$baseColor, $toColor);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$baseColor', EndColorStr='$toColor');
+}
+
+
+// ---------------------------------------------------------
+// エンボス加工
+// ---------------------------------------------------------
+@mixin white-emboss {
+	text-shadow: 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+@mixin black-emboss {
+	text-shadow: -1px -1px rgba(0, 0, 0, 0.5);
+}
+
+
+// ---------------------------------------------------------
+// iPhoneで使われてる感じのボタン
+// ---------------------------------------------------------
+@mixin iOS_button( $clr ) {
+	background: #555; 
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.4)), to(rgba(77,77,77,0.4)));	
+	background: -moz-linear-gradient(top, rgba(0,0,0,0.4), rgba(77,77,77,0.4)); 
+	float: left; 
+	padding: 4px; 
+	text-decoration: none; 
+	outline: 0; 
+	border-width: 1px; 
+	border-style: solid;
+	width: auto;
+	overflow: visible;
+	border-color: transparent transparent #666 transparent; 
+	border-color: transparent transparent rgba(202,202,202,0.27) transparent;
+	@include border-radius("12px");
+	-webkit-background-clip: padding-box;
+
+	span { 
+		display: block; 
+		float: left;
+		letter-spacing: -1px; 
+		border-width: 1px; 
+		border-style: solid; 
+		border-color: #ccc #444 #111 #444; 
+		border-color: rgba(255,255,255,0.7) rgba(0,0,0,0.5) rgba(0,0,0,0.7) rgba(0,0,0,0.5); 
+		font: bold 21px/1em Arial;
+		color: white; 
+		padding: 0.48em 2em; 
+		cursor: pointer; 
+		text-shadow: rgba(0,0,0,0.45) 0 -1px 0;
+		@include shadow( 0, 0, "3px", rgba(0,0,0,0.75));
+		@include border-radius("7px");
+		background: transparent -webkit-gradient(linear,
+		                                         left top,
+		                                         left bottom,
+		                                         from(rgba(255,255,255,0.6)),
+		                                         color-stop(0.5, rgba(255,255,255,0.15)),
+		                                         color-stop(0.5, rgba(255,255,255,0.01)),
+		                                         to(transparent));
+		background: transparent -moz-linear-gradient(top,
+		                                             rgba(255,255,255,0.6),
+		                                             rgba(255,255,255,0.15) 50%,
+		                                             rgba(255,255,255,0.01) 50%,
+		                                             transparent);
+		filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorstr='#80FFFFFF', EndColorstr='#00FFFFFF'); 
+		-webkit-background-clip: padding-box;
+		background-color : $clr;
+
+		&:active { 
+			border-top-color: rgba(255,255,255,0.2); 
+			border-left-color: rgba(0,0,0,0.4); 
+			filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#80969696', EndColorStr='#59000000'); 
+			-webkit-background-clip: padding-box;
+		}
+	}
+	&:hover {
+		span {
+			border-top-color: rgba(255,255,255,0.65); 
+			background: -webkit-gradient(linear,
+			                             left top,
+			                             left bottom,
+			                             from(rgba(220,220,220,0.6)),
+			                             color-stop(0.5, rgba(100,100,100,0.2)),
+			                             color-stop(0.5, rgba(0,0,0,0.21)),
+			                             to(rgba(0, 0, 0, 0.20))); 
+			background: -moz-linear-gradient(top,
+			                                 rgba(220,220,220,0.6),
+			                                 rgba(100,100,100,0.2) 50%,
+			                                 rgba(0,0,0,0.21) 50%,
+			                                 rgba(0, 0, 0, 0.20));
+			filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#99dcdcdc', EndColorStr='#33000000'); 
+			-webkit-background-clip: padding-box;
+		}
+	}
+
+	&:active {
+		span {
+			border-top-color: rgba(255,255,255,0.2); 
+			border-left-color: rgba(0,0,0,0.4); 
+			background: -webkit-gradient(linear,
+			                             left top,
+			                             left bottom,
+			                             from(rgba(150,150,150,0.6)),
+			                             color-stop(0.5, rgba(60,60,60,0.6)),
+			                             color-stop(0.5, rgba(40,40,40,0.6)),
+			                             to(rgba(20, 20, 20, 0.5)));
+			background: -moz-linear-gradient(top,
+			                                 rgba(150,150,150,0.6),
+			                                 rgba(60,60,60,0.6) 50%,
+			                                 rgba(40,40,40,0.6) 50%,
+			                                 rgba(20, 20, 20, 0.5));
+			filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr='#80969696', EndColorStr='#59000000'); 
+			-webkit-box-shadow: inset 0 0 18px rgba(0,0,0,0.75), rgba(0,0,0,0.75) 0px 0px 3px;
+			-moz-box-shadow: inset 0 0 18px rgba(0,0,0,0.75), rgba(0,0,0,0.75) 0px 0px 3px;
+			box-shadow: inset 0 0 18px rgba(0,0,0,0.75), rgba(0,0,0,0.75) 0px 0px 3px; 
+			-webkit-background-clip: padding-box;
+		}
+	}
+}
+
+// ---------------------------------------------------------
+// 可愛感じのボタン
+// ---------------------------------------------------------
+@mixin pop_button ( $size, $clr) {
+	background: #222 url("#{$img}overlay.png") repeat-x; 
+	display: inline-block; 
+	padding: 0px 10px; 
+	color: #fff; 
+	text-decoration: none;
+	@include border-radius("6px");
+	@include shadow( 0, "1px", "3px", rgba(0,0,0,0.6));
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	background-color: $clr;
+
+	@if $size == "small" {
+		font-size : 11px;
+	} @else if $size == "medium" {
+		font-size : 13px;
+		font-weight : bold;
+		line-height: 1; 
+		text-shadow: 0 -1px 1px rgba(0,0,0,0.25); 
+		padding:5px 10px 6px;
+	} @else if $size == "large" {
+		font-size : 14px;
+		font-weight : bold;
+		line-height: 1; 
+		text-shadow: 0 -1px 1px rgba(0,0,0,0.25); 
+		padding: 8px 14px 9px;
+	} @else if $size == "super" {
+		font-size : 34px;
+		font-weight : bold;
+		line-height: 1; 
+		text-shadow: 0 -1px 1px rgba(0,0,0,0.25); 
+		padding : 8px 14px 9px;
+	}
+
+	&:hover {
+		background-color: adjust-rgb($clr, -0.1);
+		color : #fff;
+	}
+	&:active {
+		top: 1px;
+	}
+}
+
+// ---------------------------------------------------------
+// ツヤとかがあるリアルっぽい感じのボタン
+// ---------------------------------------------------------
+@mixin real_button ($clr) {
+	$clr1	: lighten($clr, 10%); 
+	$clr2	: $clr; 
+	$clr3	: darken($clr, 11%); 
+	$clr4	: darken($clr, 12%); 
+	$clr5	: darken($clr, 14%); 
+	$clr6	: darken($clr, 17%); 
+	$clr7	: darken($clr, 19%); 
+	$clr8	: darken($clr, 25%); 
+	$clr9	: darken($clr, 27%); 
+	$clr10 : darken($clr, 29%); 
+	$clr11 : darken($clr, 30%); 
+	$clr12 : darken($clr, 38%); 
+	background-color: $clr2;
+	background-image: -webkit-gradient(linear,
+	                                   left top,
+	                                   left bottom,
+	                                   color-stop(0%, $clr2),
+	                                   color-stop(50%, $clr6),
+	                                   color-stop(50%, $clr7),
+	                                   color-stop(100%, $clr11));
+	background-image: -webkit-linear-gradient(top, $clr2 0%, $clr6 50%, $clr7 50%, $clr11 100%);
+	background-image: -moz-linear-gradient(top, $clr2 0%, $clr6 50%, $clr7 50%, $clr11 100%);
+	background-image: -ms-linear-gradient(top, $clr2 0%, $clr6 50%, $clr7 50%, $clr11 100%);
+	background-image: -o-linear-gradient(top, $clr2 0%, $clr6 50%, $clr7 50%, $clr11 100%);
+	background-image: linear-gradient(top, $clr2 0%, $clr6 50%, $clr7 50%, $clr11 100%);
+	border: 1px solid #951100;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+	-moz-box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+	box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4), 0 1px 3px #333333;
+	color: #fff;
+	font: bold 20px "helvetica neue", helvetica, arial, sans-serif;
+	line-height: 1;
+	padding: 12px 0 14px 0;
+	text-align: center;
+	text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.8);
+	padding: 6px 14px;
+	&:hover {
+		background-color: $clr1;
+		background-image: -webkit-gradient(linear, left top, left bottom,
+		                  color-stop(0%, $clr1),
+		                  color-stop(50%, $clr3),
+		                  color-stop(50%, $clr5),
+		                  color-stop(100%, $clr9));
+		background-image: -webkit-linear-gradient(top, $clr1 0%, $clr3 50%, $clr5 50%, $clr9 100%);
+		background-image: -moz-linear-gradient(top, $clr1 0%, $clr3 50%, $clr5 50%, $clr9 100%);
+		background-image: -ms-linear-gradient(top, $clr1 0%, $clr3 50%, $clr5 50%, $clr9 100%);
+		background-image: -o-linear-gradient(top, $clr1 0%, $clr3 50%, $clr5 50%, $clr9 100%);
+		background-image: linear-gradient(top, $clr1 0%, $clr3 50%, $clr5 50%, $clr9 100%);
+		cursor: pointer;
+	}
+	&:active {
+		background-color: $clr4;
+		background-image: -webkit-gradient(linear, left top, left bottom,
+		                  color-stop(0%, $clr4),
+		                  color-stop(50%, $clr8),
+		                  color-stop(50%, $clr10),
+		                  color-stop(100%, $clr12));
+		background-image: -webkit-linear-gradient(top, $clr4 0%, $clr8 50%, $clr10 50%, $clr12 100%);
+		background-image: -moz-linear-gradient(top, $clr4 0%, $clr8 50%, $clr10 50%, $clr12 100%);
+		background-image: -ms-linear-gradient(top, $clr4 0%, $clr8 50%, $clr10 50%, $clr12 100%);
+		background-image: -o-linear-gradient(top, $clr4 0%, $clr8 50%, $clr10 50%, $clr12 100%);
+		background-image: linear-gradient(top, $clr4 0%, $clr8 50%, $clr10 50%, $clr12 100%);
+		-webkit-box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4);
+		-moz-box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4);
+		box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4);
+	}
+}
+
+
+// ---------------------------------------------------------
+// シンプルで丸い感じのボタン
+// * 薄い色しか使えんよ
+// ---------------------------------------------------------
+@mixin cupid_button ( $clr ) {
+	// 色設定
+	$clr1	: $clr; 
+	$clr2	: darken($clr, 4%);
+	$clr3	: darken($clr, 5%);
+	$clr4	: darken($clr, 6%);
+
+	background-color: $clr1;
+	background-image: -webkit-gradient(linear,
+	                                   left top,
+	                                   left bottom,
+	                                   color-stop(0%, $clr1),
+	                                   color-stop(100%, $clr3));
+	background-image: -webkit-linear-gradient(top, $clr1, $clr3);
+	background-image: -moz-linear-gradient(top, $clr1, $clr3);
+	background-image: -ms-linear-gradient(top, $clr1, $clr3);
+	background-image: -o-linear-gradient(top, $clr1, $clr3);
+	background-image: linear-gradient(top, $clr1, $clr3);
+	border-top: 1px solid #abbbcc;
+	border-left: 1px solid #a7b6c7;
+	border-bottom: 1px solid #a1afbf;
+	border-right: 1px solid #a7b6c7;
+	@include border-radius("12px");
+	-webkit-box-shadow: inset 0 1px 0 0 white;
+	-moz-box-shadow: inset 0 1px 0 0 white;
+	box-shadow: inset 0 1px 0 0 white;
+	color: #1a3e66;
+	
+	font: normal 11px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	line-height: 1;
+	padding: 6px 20px 7px;
+	text-align: center;
+	text-shadow: 0 1px 1px #fff;
+
+	&:hover {
+		background-color: $clr2;
+		background-image: -webkit-gradient(linear,
+		                                   left top,
+		                                   left bottom,
+		                                   color-stop(0%, $clr2),
+		                                   color-stop(100%, $clr4));
+		background-image: -webkit-linear-gradient(top, $clr2, $clr4);
+		background-image: -moz-linear-gradient(top, $clr2, $clr4);
+		background-image: -ms-linear-gradient(top, $clr2, $clr4);
+		background-image: -o-linear-gradient(top, $clr2, $clr4);
+		background-image: linear-gradient(top, $clr2, $clr4);
+		border-top: 1px solid #a1afbf;
+		border-left: 1px solid #9caaba;
+		border-bottom: 1px solid #96a3b3;
+		border-right: 1px solid #9caaba;
+		-webkit-box-shadow: inset 0 1px 0 0 #f2f2f2;
+		-moz-box-shadow: inset 0 1px 0 0 #f2f2f2;
+		box-shadow: inset 0 1px 0 0 #f2f2f2;
+		color: #163659;
+		cursor: pointer;
+	}
+
+	&:active {
+		border: 1px solid #8c98a7;
+		-webkit-box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eeeeee;
+		-moz-box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eeeeee;
+		box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eeeeee;
+	}
+}
+
+// ---------------------------------------------------------
+// 立体的ながっつりした感じのボタン
+// ---------------------------------------------------------
+@mixin super_button {
+	width:300px;
+	color:#e4eef8;
+	background:#337fcc;
+	font-size:28px;
+	font-weight:bold;
+	text-shadow:0 -1px 1px #143352;
+	text-align:center;
+	display:block;
+	text-decoration:none;
+	border:1px solid #225588;
+	padding:12px 0 8px 0;
+	border-radius:12px;
+	background:-moz-linear-gradient(rgba(34,85,136,0.5), rgba(34,85,136,1));
+	background:-webkit-gradient(linear,
+	                            100% 0%,
+	                            100% 100%,
+	                            from(rgba(34,85,136,0.5)),
+	                            to(rgba(34,85,136,1)));
+	box-shadow:0px 1px 0px #1b446d,
+	           0px 2px 0px #1b446d,
+	           0px 3px 0px #1b446d,
+	           0px 4px 0px #1b446d,
+	           0px 5px 0px #1b446d,
+	           0px 6px 0px #1b446d,
+	           0px 7px 0px #1b446d,
+	           2px 7px 3px rgba(0,0,0,0.3),
+	           0px 1px 0px rgba(255,255,255,0.5) inset,
+	           0px -1px 0px rgba(255,255,255,0.2) inset;
+	&:hover {
+		background:-moz-linear-gradient(rgba(119,170,221,0.9), rgba(34,85,136,0.9));
+		background:-webkit-gradient(linear,
+		                            100% 100%,
+		                            100% 0%,
+		                            from(rgba(34,85,136,0.9)),
+		                            to(rgba(119,170,221,0.9)));
+		box-shadow:0px 1px 0px #225588,
+		           0px 2px 0px #225588,
+		           0px 3px 0px #225588,
+		           0px 4px 0px #225588,
+		           0px 5px 0px #225588,
+		           0px 6px 0px #225588,
+		           0px 7px 0px #225588,
+		           2px 7px 3px rgba(0,0,0,0.3),
+		           0px 1px 0px rgba(255,255,255,0.5) inset,
+		           0px -1px 0px rgba(255,255,255,0.2) inset;
+	}
+}

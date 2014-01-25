@@ -1,0 +1,24 @@
+{
+  "name": "RIN",
+  "version": "0.0.1",
+  "main": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "libs/*"
+  ],
+  "devDependencies": {
+    "jquery": "1.9.1",
+    "font-awesome": "~4.0.3",
+    "normalize-scss": "*"
+  },
+  "exportsOverride": {
+    "jquery": {
+      "": "*.js*"
+      },
+    "font-awesome": {
+      "css": "css/*.css",
+      "fonts": "fonts/*"
+    }
+  }
+}

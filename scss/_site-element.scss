@@ -1,0 +1,155 @@
+// ------------------------------------------------
+// サイト毎のパーツスタイリング
+// ------------------------------------------------
+
+// ------------------------------------------------
+// 各要素
+// ------------------------------------------------
+body {
+  margin: auto;
+  color: $font1;
+  font-size: 1em;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  font-family: 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
+  font-weight: normal;
+  background: white;
+}
+// 中にテキストが入るような要素にはマージントップを追加
+p,table,dt,dd,blockquote,pre {
+  margin: 1.8em 0 0 0;
+}
+// li 箇条書きだから段落とかよりもちょっと少なめマージン
+li {
+  margin: 1em 0 0 0;
+}
+// blockquuteの次に注釈を書く場合は .note つける
+.note {
+  margin: 0.6em 0 0 0;
+}
+
+// 見出しに隣接する要素は上マージンを少なくする
+h1, h2, h3, h4, h5, h6 {
+  +ul>li:first-child,
+  +ol>li:first-child,
+  +p {
+    margin-top: $mgn01 / 2;
+  }
+}
+h1 { font-size: 1.3em; margin: 1.3em 0 0 0;}
+h2 { font-size: 1.3em; margin: 2.4em 0 0 0;}
+h3 { font-size: 1.2em; margin: 2.2em 0 0 0;}
+h4 { font-size: 1.0em; }
+h5 { font-size: 1.0em; }
+h6 { font-size: 1.0em; }
+
+a, a:visited {
+  color: $lnk1;
+  text-decoration: none;
+  &:hover, &:focus, &:active {
+    color: $lnk1;
+    border-bottom: 1px solid $lnk1;
+  }
+}
+img {
+  vertical-align:bottom;
+  // 最大でも親要素を超えないようにしたい
+  max-width: 100%;
+}
+.ie8 img {
+  width: auto;
+}
+ul,ol {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  li {
+    list-style-type: disc;
+    margin-left: 1.4em;
+  }
+}
+ol {
+  counter-reset:li;
+  list-style:none;
+  li {
+    position:relative;
+    padding-left: 20px;
+    &:before {
+      content:counter(li)".";
+      counter-increment:li;
+      padding-right: 6px;
+      margin-left: -20px;
+    }
+  }
+}
+@if $support-ie7 {
+  *:first-child+html ol li{
+    list-style-type: decimal !important;
+    list-style-position: outside !important;
+    margin-left: 24px;
+    padding-left: 0;
+  }
+}
+
+ul {
+  list-style:none;
+  li {
+    list-style:none;
+    background:url("#{$dir}i/list_mark_01.jpg") no-repeat left 9px;
+    padding:0 0 0 14px;
+    margin-left: 0;
+  }
+  .children  {
+    margin-top:16px;
+  }
+}
+
+label {
+  display:block;
+}
+blockquote {
+  // blockquoteは大抵pとかのdisplay:block;を使う要素を内包するから、
+  // パディングでマージンの相殺が出ない用にして、上マージンを追加(上で追加してる)
+  // ただし、内包する要素の一番最初のコンテンツのマージンは取っておいた方が良いだろうね
+  padding: 5px 1em;
+  border-left: 4px solid #efefef;
+  >*:first-child {
+    margin-top: 0;
+  }
+}
+pre {
+  font-size: 0.8em;
+  padding: 0.4em;
+  background: #f9f9f9;
+  color: #644;
+  word-wrap: break-word;
+}
+
+// --------------------------------
+// table
+// --------------------------------
+.table {
+  width: 100%;
+  thead,tbody {
+    th,td {
+      padding: 1em;
+      text-align: left;
+      border-bottom: 1px solid #efefef;
+    }
+  }
+  thead {
+    tr {
+      th,td {
+        font-weight: bold;
+        background: #efefef;
+      }
+    }
+  }
+  tbody {
+    tr {
+      th,td {
+      }
+    }
+  }
+}
