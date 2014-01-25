@@ -36,16 +36,16 @@
     <ul class="icon">
     <?php if( is_tw_name() ) { ?>
     <li class="twitter"><a href="http://twitter.com/#!/<?php tw_name(); ?>" target="_blank">
-      <i class="fa fa-twitter-square icon-3x"></i>
+      <i class="fa fa-twitter-square fa-3x"></i>
     </a></li>
     <?php } ?>
     <?php if( is_fb_name() ) : ?>
     <li class="facebook"><a href="http://www.facebook.com/<?php fb_name(); ?>" target="_blank">
-      <i class="fa fa-facebook-square icon-3x"></i>
+      <i class="fa fa-facebook-square fa-3x"></i>
     </a></li>
     <?php endif; ?>
     <li class="rss" ><a href="<?php bloginfo('atom_url'); ?>" target="_blank">
-      <i class="fa fa-rss-square icon-3x"></i>
+      <i class="fa fa-rss-square fa-3x"></i>
     </a></li>
     </div>
   </div>
