@@ -81,7 +81,7 @@ if( $my_query->have_posts() ) {?>
       </section>
     </article>
 <?php endwhile; ?>
-  <!-- </section> -->
+  </section>
 
 <?php get_sidebar();?>
 
