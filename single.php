@@ -23,8 +23,8 @@
         <?php if ( has_post_thumbnail() ) {
               echo '<div class="thumbnail">';
                 the_post_thumbnail();
-            }
               echo '</div>';
+            }
         ?>
       </div>
 
