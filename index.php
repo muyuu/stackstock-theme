@@ -17,7 +17,7 @@
         </div>
 
         <?php the_excerpt(''); ?>
-        <p class="excerpt"><i class="icon-book"></i><a href="<?php the_permalink(); ?>">つづきをよむ</a></p>
+        <p class="excerpt"><i class="fa-book"></i><a href="<?php the_permalink(); ?>">つづきをよむ</a></p>
       </div>
     </article>
 <?php endwhile; ?>
