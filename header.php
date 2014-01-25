@@ -12,12 +12,12 @@
 <meta name="keywords" content="web制作, javascript, css, html, php, git, frontend, stackstock" />
 
 <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>">
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/libs/font-awesome/css/font-awesome.min.css">
 <link href='//fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>">
 <link rel="alternate" type="application/rss+xml" href="<?php bloginfo('atom_url'); ?>">
 
+<?php wp_enqueue_script('jquery');?>
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); if( is_single() || is_tag() || $_GET['s']){ ?> id="single" <?php }?>>
