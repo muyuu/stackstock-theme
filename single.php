@@ -8,31 +8,31 @@
         <p class="publish_date"><?php the_time('Y年m月d日') ?></p>
       </header>
 
-    <div class="bnrArea">
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-5004750064695656";
-/* SS 個別ページ上部 */
-google_ad_slot = "5684883028";
-google_ad_width = 300;
-google_ad_height = 250;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
-      <div class="thumbnail">
-<?php if ( has_post_thumbnail() ) {
-        the_post_thumbnail();
-    }
-?>
+      <div class="bnrArea">
+        <script type="text/javascript"><!--
+        google_ad_client = "ca-pub-5004750064695656";
+        /* SS 個別ページ上部 */
+        google_ad_slot = "5684883028";
+        google_ad_width = 300;
+        google_ad_height = 250;
+        //-->
+        </script>
+        <script type="text/javascript"
+        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+        <?php if ( has_post_thumbnail() ) {
+              echo '<div class="thumbnail">';
+                the_post_thumbnail();
+            }
+              echo '</div>';
+        ?>
       </div>
-    </div>
 
-     <div class="post_content">
+      <div class="post_content">
         <?php the_content(''); ?>
       </div>
 
-<?php get_template_part('socialbutton'); ?>
+      <?php get_template_part('socialbutton'); ?>
 
 <?php //関連記事一覧
     $original_post = $post;
@@ -67,19 +67,19 @@ if( $my_query->have_posts() ) {?>
           <strong>種類:</strong> <?php the_category(', ') ?><br />
           <?php the_tags('<strong>ジャンル:</strong> ',' '); ?>
         </p>
-    </section>
+      </section>
 
-    <nav class="pagenavi">
-      <?php next_post_link('%link', 'これの次に書いたページ'); ?>
-      <?php previous_post_link('%link', 'これの前に書いたページ'); ?>
-    </nav>
+      <nav class="pagenavi">
+        <?php next_post_link('%link', 'これの次に書いたページ'); ?>
+        <?php previous_post_link('%link', 'これの前に書いたページ'); ?>
+      </nav>
 
-    <section class="comment">
-      <h2>FBでコメント</h2>
-      <p class="fb-comments" data-href="<?php the_permalink(); ?>" data-num-posts="2" data-width="480"></p>
-      <?php comments_template();  ?>
-    </section>
-
+      <section class="comment">
+        <h2>FBでコメント</h2>
+        <p class="fb-comments" data-href="<?php the_permalink(); ?>" data-num-posts="2" data-width="480"></p>
+        <?php comments_template();  ?>
+      </section>
+    </article>
 <?php endwhile; ?>
   </section>
 
