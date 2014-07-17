@@ -1,26 +1,28 @@
 <?php get_header(); ?>
 
   <section class="main col8">
-<?php while (have_posts()) : the_post(); ?>
-    <article>
-      <header>
-        <h2 class="post_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-        <p class="publish_date"><?php the_time('Y年m月d日') ?></p>
-      </header>
-      <div class="post_content">
-        <div class="thumbnail">
-<?php if ( has_post_thumbnail() ) {
-         the_post_thumbnail();
-      } else { ?>
-         <img src="<?php bloginfo('template_url'); ?>/i/default_thumb.jpg" />
-<?php  } ?>
+    <?php while (have_posts()) : the_post(); ?>
+      <article>
+        <header>
+          <h2 class="post_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+          <p class="publish_date"><?php the_time('Y年m月d日') ?></p>
+        </header>
+        <div class="post_content">
+          <?php /*
+          echo '<div class="thumbnail">';
+            if ( has_post_thumbnail() ) {
+              the_post_thumbnail();
+            } else {
+              echo "<img src='". bloginfo('template_url'). "/i/default_thumb.jpg' />";
+            }
+          </div>
+          */
+          ?>
+          <?php the_excerpt(''); ?>
+          <p class="excerpt"><i class="fa fa-book"></i><a href="<?php the_permalink(); ?>">つづきをよむ</a></p>
         </div>
-
-        <?php the_excerpt(''); ?>
-        <p class="excerpt"><i class="fa fa-book"></i><a href="<?php the_permalink(); ?>">つづきをよむ</a></p>
-      </div>
-    </article>
-<?php endwhile; ?>
+      </article>
+    <?php endwhile; ?>
 
     <nav class="pagenavi">
       <?php next_posts_link('一つ前のページ'); ?>
