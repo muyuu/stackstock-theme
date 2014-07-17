@@ -16,3 +16,5 @@ wp-content/uploads/
 wp-content/wp-cache-config.php
 .idea
 *.iml
+.sass-cache
+node_modules
