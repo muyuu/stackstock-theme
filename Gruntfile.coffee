@@ -82,12 +82,12 @@ module.exports = (grunt) ->
           sourcemap: true
           style: 'expanded'
         files:
-          'style.css': 'scss/style.scss'
+          'c/style.css': 'scss/style.scss'
       build:
         options:
           style: 'compressed'
         files:
-          'style.css': 'scss/style.scss'
+          'c/style.css': 'scss/style.scss'
 
     # jshint
     jshint:
