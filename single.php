@@ -39,7 +39,7 @@
     $tags = wp_get_post_tags($post->ID);
     $tagIDs = array();
     if ($tags) {
-        $tagcount = count($tags);
+        $tagcount = is_array($tags) ? count($tags) : 1;
         for ($i = 0; $i < $tagcount; $i++) {
             $tagIDs[$i] = $tags[$i]->term_id;
         }

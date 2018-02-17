@@ -103,7 +103,7 @@ function the_recommend($show_post='5',$order_key='ID',$order_by='DESC',$sort_key
 	}
 
 	// 関連記事が1件以上あったら出力する。
-	if(count($posts) > 0) {
+	if(is_array($posts) && count($posts) > 0) {
 		// ソートするために変数にキーと値を格納する
 		foreach ($posts as $key => $row) {
 			$sort[$key] = $row[$sort_key];
