@@ -4,6 +4,10 @@
   "description": "STACKSTOCK Theme",
   "repository": "https://bitbucket.org/muyuu/rin",
   "author": "muyuu",
+  "scripts": {
+    "start": "grunt watch",
+    "build": "grunt build"
+  },
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-bower-task": "~0.3.4",
