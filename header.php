@@ -13,6 +13,7 @@
 
 <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>">
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/c/style.css">
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/libs/font-awesome/css/font-awesome.min.css">
 <link href='//fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
 <link rel="alternate" type="application/rss+xml" href="<?php bloginfo('atom_url'); ?>">
