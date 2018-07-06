@@ -183,7 +183,7 @@ function get_twitter_profile($screen_name){
 //Twitterのアイコン取得
 function get_twitter_icon($screen_name){
     $prof = get_twitter_profile($screen_name);
-    return $prof['profile_image_url'];
+    return $prof['profile_image_url_https'];
 }
 //Twitterのアイコン取得
 function twitter_icon($screen_name){
