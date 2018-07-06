@@ -43,7 +43,7 @@ set_post_thumbnail_size( 260, 200, true );
 //ソーシャルサービスのアカウントを記載してください
 //ここを変えるとヘッダーとフッターにリンクとかが付きますよ
 //Twitter のアカウント
-$tw_screen_name = "anticyborg";
+$tw_screen_name = "muyuu_";
 //facebook のアカウント
 $fb_user_name = "muyuu";
 //Delicious のアカウント
