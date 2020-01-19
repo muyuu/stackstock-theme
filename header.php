@@ -26,28 +26,13 @@
 <header class="pageheader">
   <div class="container">
     <div class="site_info">
-    <?php if(is_home()): // ホームの場合はブログタイトルがH1 ?>
-    <h1 class="sitename"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
-    <?php else: // ホーム以外の場合は記事タイトルがH1 ?>
-    <p class="sitename"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
-    <?php endif; ?>
-    <p class="description"><?php bloginfo('description'); ?></p>
-    <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
-    </div>
-    <ul class="icon">
-    <?php if( is_tw_name() ) { ?>
-    <li class="twitter"><a href="http://twitter.com/#!/<?php tw_name(); ?>" target="_blank">
-      <i class="fa fa-twitter-square fa-3x"></i>
-    </a></li>
-    <?php } ?>
-    <?php if( is_fb_name() ) : ?>
-    <li class="facebook"><a href="http://www.facebook.com/<?php fb_name(); ?>" target="_blank">
-      <i class="fa fa-facebook-square fa-3x"></i>
-    </a></li>
-    <?php endif; ?>
-    <li class="rss" ><a href="<?php bloginfo('atom_url'); ?>" target="_blank">
-      <i class="fa fa-rss-square fa-3x"></i>
-    </a></li>
+      <?php if(is_home()): // ホームの場合はブログタイトルがH1 ?>
+      <h1 class="sitename"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
+      <?php else: // ホーム以外の場合は記事タイトルがH1 ?>
+      <p class="sitename"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
+      <?php endif; ?>
+      <p class="description"><?php bloginfo('description'); ?></p>
+      <?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
     </div>
   </div>
 </header>
